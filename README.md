@@ -11,7 +11,7 @@ Programme permettant de réduire le nombre de couleur d'un image par clustering 
  
 # Exemple de Réduction 
 ## Image Originale
-<img src="/img/grogo.png" alt="Grogo Original"/>
+![Grogu Original](https://github.com/M4ti5/ColorClustering/blob/main/img/grogu.png)
 
 ## Image K-means 8 Couleurs 5 Itérations
-<img src="/img/grogoNew.png" alt="Grogo en K-means"/>
+![Grogu Modifier](https://github.com/M4ti5/ColorClustering/blob/main/img/groguNew.png)
