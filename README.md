@@ -4,8 +4,8 @@ Programme permettant de réduire le nombre de couleur d'un image par clustering 
 # Algorithme de Clustering
 ## K-means
   - Distance Euclidienne
-  - Distance de Mannhattan ( A venir )
-- Distance de Minkovski( A venir )
+  - Distance de Manhattan 
+
 
 ## DBScan ( A venir )
  

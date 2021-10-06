@@ -57,6 +57,5 @@ public class Image {
           return blueMap;
     }
 
-   
 }
 }
