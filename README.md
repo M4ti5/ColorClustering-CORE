@@ -1,5 +1,5 @@
 # ColorClustering
-Programme permettant de réduire le nombre de couleur d'un image par clustering des couleurs présante sur celle-ci.
+Programme permettant de réduire le nombre de couleurs d'une image par clustering des couleurs présente sur celle-ci.
 
 # Algorithme de Clustering
 ## K-means
