@@ -11,7 +11,6 @@ Programme permettant de réduire le nombre de couleur d'un image par clustering 
  
 # Exemple de Réduction 
 ## Image Originale
-<img src="/img/grogo.png" alt="Grogo en 256RGB"/>
+
 
 ## Image K-means 8 Couleurs 5 Itérations
-<img src="/img/grogoNew.png" alt="Grogo en 8RGB"/>
