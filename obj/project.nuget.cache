@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "irt7uMYPO0xf478Yer29JrMb6ciP9KasOX/HC6heMBjF7NWoURi1EpHa68GLpH5qdlZwwCU3BPYCM+rmpTZZ3A==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Matis_CAFFIAUX\\Documents\\Cours\\UQAC\\Forage de Données\\ColorClustering\\ColorClustering.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Matis_CAFFIAUX\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
+    "C:\\Users\\Matis_CAFFIAUX\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
+    "C:\\Users\\Matis_CAFFIAUX\\.nuget\\packages\\system.drawing.common\\5.0.2\\system.drawing.common.5.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}
