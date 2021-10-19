@@ -7,14 +7,14 @@ namespace ColorClustering {
 
         private Image image;
 
-        private Pixel[] pixelMap;
-        private Pixel[] alteredPixelMap;
+        private KNode[] pixelMap;
+        private KNode[] alteredPixelMap;
 
         private byte[] redMap;
         private byte[] greenMap;
         private byte[] blueMap;
 
-        private Pixel[] clusters;
+        private KNode[] clusters;
         private bool isClustered = false;
 
         public KMeans(Image _image, byte k, int t, String method) {
@@ -23,11 +23,11 @@ namespace ColorClustering {
             greenMap = image.GetGreenMap();
             blueMap = image.GetBlueMap();
 
-            pixelMap = new Pixel[image.height * image.width];
-            alteredPixelMap = new Pixel[image.width * image.height];
+            pixelMap = new KNode[image.height * image.width];
+            alteredPixelMap = new KNode[image.width * image.height];
 
             for (int i = 0; i < image.width * image.height; i++) {
-                pixelMap[i] = new Pixel(redMap[i], greenMap[i], blueMap[i]);
+                pixelMap[i] = new KNode(redMap[i], greenMap[i], blueMap[i]);
             }
 
             Clustering(k, t, method);
@@ -44,14 +44,14 @@ namespace ColorClustering {
 			 * t : number of iteration
 			 */
 
-            clusters = new Pixel[k];
+            clusters = new KNode[k];
             Random random = new();
 
             //Creation of Clusters with Random Position 
             for (byte ki = 0; ki < k; ki++) {
                 byte[] randomNumbers = new byte[3];
                 random.NextBytes(randomNumbers);
-                clusters[ki] = new Pixel(randomNumbers[0], randomNumbers[1], randomNumbers[2]);
+                clusters[ki] = new KNode(randomNumbers[0], randomNumbers[1], randomNumbers[2]);
             }
 
             //Clear bind with old Clusters
@@ -110,14 +110,14 @@ namespace ColorClustering {
             //Print all colors of clusters
             Console.WriteLine("We have " + k + " Cluster(s)");
             for (byte ki = 0; ki < k; ki++) {// for all clusters
-                Pixel temp = clusters[ki];
+                KNode temp = clusters[ki];
                 Console.WriteLine("Cluster Color"+ki+" : R" + temp.red +  " G" + temp.green + " B" + temp.blue);
             }
 
             isClustered = true;
         }
 
-        private double EuclidianDistance(Pixel a, Pixel b) {
+        private double EuclidianDistance(KNode a, KNode b) {
 
             return Math.Pow(Math.Pow(a.red - b.red, 2) + Math.Pow(a.red - b.red, 2) + Math.Pow(a.green - b.green, 2) + Math.Pow(a.blue - b.blue, 2), 0.5);
 
@@ -133,9 +133,9 @@ namespace ColorClustering {
             if (isClustered) {
                 
                 for (int pi = 0; pi < image.width * image.height; pi++) { // for all pixels
-                    Pixel ki = clusters[(byte)pixelMap[pi].bindedCluster];
+                    KNode ki = clusters[(byte)pixelMap[pi].bindedCluster];
 
-                    alteredPixelMap[pi] = new Pixel(ki.red, ki.green, ki.blue);
+                    alteredPixelMap[pi] = new KNode(ki.red, ki.green, ki.blue);
                 }
                 
 

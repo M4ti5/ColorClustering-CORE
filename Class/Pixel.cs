@@ -6,7 +6,7 @@ namespace ColorClustering {
         public byte red;
         public byte green;
         public byte blue;
-        public byte? bindedCluster = null;
+        
 
         public Pixel(byte _red, byte _green, byte _blue) {
             red = _red;
@@ -23,6 +23,5 @@ namespace ColorClustering {
         public Color ToColor() {
             return Color.FromArgb(red, green, blue);
         }
-
     }
 }

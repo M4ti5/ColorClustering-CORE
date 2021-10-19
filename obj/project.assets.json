@@ -150,29 +150,24 @@
   },
   "packageFolders": {
     "C:\\Users\\Matis_CAFFIAUX\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Matis_CAFFIAUX\\Documents\\Cours\\UQAC\\Forage de Données\\ColorClustering\\ColorClustering.csproj",
+      "projectUniqueName": "C:\\Users\\Matis_CAFFIAUX\\Documents\\Dev_Lab\\C#\\ColorClustering\\ColorClustering.csproj",
       "projectName": "ColorClustering",
-      "projectPath": "C:\\Users\\Matis_CAFFIAUX\\Documents\\Cours\\UQAC\\Forage de Données\\ColorClustering\\ColorClustering.csproj",
+      "projectPath": "C:\\Users\\Matis_CAFFIAUX\\Documents\\Dev_Lab\\C#\\ColorClustering\\ColorClustering.csproj",
       "packagesPath": "C:\\Users\\Matis_CAFFIAUX\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Matis_CAFFIAUX\\Documents\\Cours\\UQAC\\Forage de Données\\ColorClustering\\obj\\",
+      "outputPath": "C:\\Users\\Matis_CAFFIAUX\\Documents\\Dev_Lab\\C#\\ColorClustering\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
         "C:\\Users\\Matis_CAFFIAUX\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"

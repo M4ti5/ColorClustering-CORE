@@ -8,9 +8,11 @@ namespace ColorClustering {
             
             Image myImage = new Image(@"..\..\..\Img\lotus.png");
 
-            new KMeans(myImage, 8, 5, "Euclidian");
-
+            //new KMeans(myImage, 8, 5, "Euclidian");
             //new KMeans(myImage, 8, 5, "Manhattan");
+
+            new DBScan(myImage);
+
         }
     }
 
