@@ -16,14 +16,14 @@ namespace ColorClustering {
             for (int i = 0 ; i < image.width * image.height ; i++) {
                 pixelMap.Add(new DBSNode(redMap[i] , greenMap[i] , blueMap[i]));
             }
-            /*
+            
             Stopwatch time = new Stopwatch();
             time.Start();
             Console.WriteLine("Demmarage de la reduction ...");
             pixelMap = DBSNode.DeleteDuplicate(pixelMap);
             time.Stop();
             Console.WriteLine("Temps de recudtion des doublons : " + time.Elapsed.ToString());
-            */
+            
 
             Clustering(3 , 10);
 
@@ -74,13 +74,13 @@ namespace ColorClustering {
 
 
             //Check
-            Console.WriteLine("Nombre de pixel" + pixelMap.Count.ToString());
-            Console.WriteLine("Nombre de Area" + areas.Count.ToString());
+            Console.WriteLine("Nombre de pixel : " + pixelMap.Count.ToString());
+            Console.WriteLine("Nombre de Area : " + areas.Count.ToString());
             int temp = 0;
             for (int i = 0 ; i < areas.Count ; i++) {
                 temp += areas[i].Size();
             }
-            Console.WriteLine("Nombre de pixel dans Areas" + temp.ToString());
+            Console.WriteLine("Nombre de pixel dans Areas : " + temp.ToString());
 
 
         }
