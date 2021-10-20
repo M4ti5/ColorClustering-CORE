@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace ColorClustering {
     class DBScan {
         private Image image;
         private List<DBSNode> pixelMap = new List<DBSNode>();
-        //private List<DBSNode> reducePixelMap = new List<DBSNode>();
 
         public DBScan (Image _image) {
             image = _image;
@@ -17,6 +16,14 @@ namespace ColorClustering {
             for (int i = 0 ; i < image.width * image.height ; i++) {
                 pixelMap.Add(new DBSNode(redMap[i] , greenMap[i] , blueMap[i]));
             }
+            /*
+            Stopwatch time = new Stopwatch();
+            time.Start();
+            Console.WriteLine("Demmarage de la reduction ...");
+            pixelMap = DBSNode.DeleteDuplicate(pixelMap);
+            time.Stop();
+            Console.WriteLine("Temps de recudtion des doublons : " + time.Elapsed.ToString());
+            */
 
             Clustering(3 , 10);
 
@@ -25,40 +32,46 @@ namespace ColorClustering {
         public void Clustering (int m , float r) {
 
             List<DBSArea> areas = new List<DBSArea>(); // List of area 
+            Stopwatch time = new Stopwatch();
 
             // Attribution of each Pixel
             for (int i = 0 ; i < pixelMap.Count ; i++) {
+                time.Start();
                 for (int j = i + 1 ; j < pixelMap.Count ; j++) {
-                    if (InCircle(pixelMap[i] , pixelMap[j] , r)) {
+                    if (!( pixelMap[i].HaveArea() && pixelMap[j].HaveArea() && DBSArea.SameArea(pixelMap[i].area , pixelMap[j].area) )) {
 
-                        if (!pixelMap[i].HaveArea() && !pixelMap[j].HaveArea()) { // Create Area
-                            pixelMap[i].area = new DBSArea(pixelMap[i]);
-                            pixelMap[j].area = pixelMap[i].area;
-                            pixelMap[i].area.Add(pixelMap[j]);
+                        if (InCircle(pixelMap[i] , pixelMap[j] , r)) {
 
-                            areas.Add(pixelMap[i].area);
+                            if (!pixelMap[i].HaveArea() && !pixelMap[j].HaveArea()) { // Create Area
+                                pixelMap[i].area = new DBSArea(pixelMap[i]);
+                                pixelMap[j].area = pixelMap[i].area;
+                                pixelMap[i].area.Add(pixelMap[j]);
 
-                        } else if (pixelMap[i].HaveArea() && !pixelMap[j].HaveArea()) { // Add Node to own Area
-                            pixelMap[i].area.Add(pixelMap[j]);
-                        } else if (!pixelMap[i].HaveArea() && pixelMap[j].HaveArea()) { // Add Node to other Area
-                            pixelMap[j].area.Add(pixelMap[i]);
+                                areas.Add(pixelMap[i].area);
 
-                        } else { // fusion of Area
-                            if (!DBSArea.SameArea(pixelMap[i].area , pixelMap[j].area)) { // Not the same Area
+                            } else if (pixelMap[i].HaveArea() && !pixelMap[j].HaveArea()) { // Add Node to own Area
+                                pixelMap[i].area.Add(pixelMap[j]);
+                            } else if (!pixelMap[i].HaveArea() && pixelMap[j].HaveArea()) { // Add Node to other Area
+                                pixelMap[j].area.Add(pixelMap[i]);
+
+                            } else { // fusion of Area
+                                if (!DBSArea.SameArea(pixelMap[i].area , pixelMap[j].area)) { // Not the same Area
                                     areas.Remove(pixelMap[j].area);
                                     pixelMap[i].area.Merge(pixelMap[j].area);
-                                
+
+                                }
                             }
                         }
 
                     }
                 }
-                if (i % 1000 == 0) {
-
-                    Console.WriteLine(i.ToString() + "/" + pixelMap.Count.ToString() + "  Time: " + DateTime.Now.ToString());
+                if (i % 10000 == 0) {
+                    time.Stop();
+                    Console.WriteLine(i.ToString() + "/" + pixelMap.Count.ToString() + "  Time: " + time.Elapsed.ToString());
+                    time.Reset();
                 }
             }
-            
+
 
             //Check
             Console.WriteLine("Nombre de pixel" + pixelMap.Count.ToString());
@@ -73,7 +86,7 @@ namespace ColorClustering {
         }
 
         public static bool InCircle (DBSNode a , DBSNode b , float r) {
-            if (Math.Pow(a.red - b.red , 2) + Math.Pow(a.green - b.green , 2) + Math.Pow(a.blue - b.blue , 2) <= Math.Pow(r , 2)) {
+            if ( (a.red - b.red) * ( a.red - b.red ) + (a.green - b.green) * ( a.green - b.green ) + (a.blue - b.blue) * (a.blue - b.blue) <= r*r) {
                 return true;
             } else {
                 return false;
