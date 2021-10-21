@@ -7,11 +7,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ColorClustering", "ColorClu
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D27E25E1-8DD7-462A-AB42-0CB08E0CF5F4}"
 	ProjectSection(SolutionItems) = preProject
+		Class\Clusters\DBSArea.cs = Class\Clusters\DBSArea.cs
+		Class\Clusters\DBScan.cs = Class\Clusters\DBScan.cs
+		Class\Clusters\DBSNode.cs = Class\Clusters\DBSNode.cs
 		Image.cs = Image.cs
 		Kmeans.cs = Kmeans.cs
 		Class\Clusters\KNode.cs = Class\Clusters\KNode.cs
 		Pixel.cs = Pixel.cs
+		Class\PixelTree.cs = Class\PixelTree.cs
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ColorClusteringTests", "..\UnitTests\ColorClusteringTests.csproj", "{F6A8E589-947C-460C-9D38-7B9A5BEC1735}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +29,10 @@ Global
 		{27FBBC14-A5CA-4A7E-B1C4-E574562BD1FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{27FBBC14-A5CA-4A7E-B1C4-E574562BD1FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{27FBBC14-A5CA-4A7E-B1C4-E574562BD1FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6A8E589-947C-460C-9D38-7B9A5BEC1735}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6A8E589-947C-460C-9D38-7B9A5BEC1735}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6A8E589-947C-460C-9D38-7B9A5BEC1735}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6A8E589-947C-460C-9D38-7B9A5BEC1735}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

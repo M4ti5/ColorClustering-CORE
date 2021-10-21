@@ -1,57 +1,72 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace ColorClustering {
-    class DBSArea {
-        private List<DBSNode> Nodes;
+    public class DBSArea {
+        private List<DBSNode> nodes;
 
         public DBSArea () {
-            Nodes = new List<DBSNode>(); 
+            nodes = new List<DBSNode>();
         }
 
         public DBSArea (DBSNode _Node) : this() {
-            Nodes.Add(_Node);
+            nodes.Add(_Node);
         }
 
-        public DBSArea (List<DBSNode> _Nodes): this() {
-            for( int i = 0 ; i < _Nodes.Count ; i++) {
-                Nodes.Add(_Nodes[i]);
+        public DBSArea (List<DBSNode> _nodes) : this() {
+            for (int i = 0 ; i < _nodes.Count ; i++) {
+                nodes.Add(_nodes[i]);
             }
         }
 
         public bool Have (DBSNode node) {
-            if (Nodes.Contains(node)) {
+            if (nodes.Contains(node)) {
                 return true;
             } else {
                 return false;
-            } 
+            }
         }
 
         public void Add (DBSNode node) {
-            Nodes.Add(node);
+            nodes.Add(node);
             node.area = this;
         }
 
-        public DBSNode Get(int index) {
-            return Nodes[index];
+        public DBSNode Get (int index) {
+            return nodes[index];
         }
 
         public int Size () {
-            return Nodes.Count;
+            return nodes.Count;
         }
 
         public void Merge (DBSArea other) {
-            for(int i = 0 ; i < other.Size() ; i++) {
-                Nodes.Add(other.Nodes[i]);
-                other.Nodes[i].area = this;
+            for (int i = 0 ; i < other.Size() ; i++) {
+                nodes.Add(other.nodes[i]);
+                other.nodes[i].area = this;
             }
-    
+
+        }
+
+        public static List<DBSArea> Purge (List<DBSArea> areas , int m , out DBSArea outliers) {
+            List<DBSArea> temp = new List<DBSArea>();
+            outliers = new DBSArea();
+            foreach(DBSArea area in areas) {
+                if (area.Size() < m) {
+                    foreach( DBSNode node in area.nodes) {
+                        node.area = null;
+                        outliers.Add(node);
+                    }
+                } else {
+                    temp.Add(area);
+                    outliers = null;
+                }
+            }
+
+            return temp;
         }
 
         public static bool SameArea (DBSArea a , DBSArea b) {
-            if(a == b) {
+            if (a == b) {
                 return true;
             } else {
                 return false;

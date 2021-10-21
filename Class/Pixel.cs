@@ -2,7 +2,7 @@
 using System.Drawing;
 
 namespace ColorClustering {
-    class Pixel {
+    public class Pixel {
         public byte red;
         public byte green;
         public byte blue;

@@ -3,26 +3,29 @@ using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace ColorClustering {
-    class DBScan {
+    public class DBScan {
         private Image image;
         private List<DBSNode> pixelMap = new List<DBSNode>();
+        private PixelTree pixelTree;
 
         public DBScan (Image _image) {
+            Console.WriteLine("DScan Start ...");
             image = _image;
             byte[] redMap = image.GetRedMap();
             byte[] greenMap = image.GetGreenMap();
             byte[] blueMap = image.GetBlueMap();
 
+            
             for (int i = 0 ; i < image.width * image.height ; i++) {
                 pixelMap.Add(new DBSNode(redMap[i] , greenMap[i] , blueMap[i]));
             }
-            
+
+            Console.WriteLine("Optimizing...");
             Stopwatch time = new Stopwatch();
             time.Start();
-            Console.WriteLine("Demmarage de la reduction ...");
-            pixelMap = DBSNode.DeleteDuplicate(pixelMap);
+            pixelMap = DBSNode.DeleteDuplicate(pixelMap, out pixelTree);
             time.Stop();
-            Console.WriteLine("Temps de recudtion des doublons : " + time.Elapsed.ToString());
+            Console.WriteLine("Optimizing time : " + time.Elapsed.ToString());
             
 
             Clustering(3 , 10);
@@ -72,6 +75,10 @@ namespace ColorClustering {
                 }
             }
 
+            //Deleting Area which contains < m Nodes
+            foreach( DBSArea area in areas) {
+
+            }
 
             //Check
             Console.WriteLine("Nombre de pixel : " + pixelMap.Count.ToString());
@@ -81,6 +88,8 @@ namespace ColorClustering {
                 temp += areas[i].Size();
             }
             Console.WriteLine("Nombre de pixel dans Areas : " + temp.ToString());
+
+
 
 
         }
