@@ -6,12 +6,14 @@ namespace ColorClustering {
     class Program {
         static void Main(string[] args) {
             
-            Image myImage = new Image(@"..\..\..\Img\lotus.png");
+            Image myImage = new Image(@"..\..\..\Img\grogu.png");
+            
+            //KMeans test = new KMeans(myImage, 8, 5, "Euclidian");
+            KMeans test = new KMeans(myImage, 8, 5, "Manhattan");
+            test.Print(); // Print at same path of the image
+            
 
-            //new KMeans(myImage, 8, 5, "Euclidian");
-            //new KMeans(myImage, 8, 5, "Manhattan");
-
-            new DBScan(myImage);
+            //new DBScan(myImage , 3 , 5);
 
         }
     }

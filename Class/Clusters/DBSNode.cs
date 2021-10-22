@@ -6,30 +6,16 @@ namespace ColorClustering {
         public DBSNode (byte _red , byte _green , byte _blue) : base(_red , _green , _blue) {
 
         }
-        public static List<DBSNode> DeleteDuplicate (List<DBSNode> list , out PixelTree tree) {
-
-            List<DBSNode> cleanedList = new List<DBSNode>();
-            tree = new PixelTree();
-
-            for (int i = 0 ; i < list.Count ; i++) {
-
-                if (cleanedList.Count == 0) {
-                    cleanedList.Add(list[i]);
-                    tree.AddNode(list[i]);
+        public static PixelTree DeleteDuplicate (List<DBSNode> list) {
+            PixelTree tree = new PixelTree(list[0]);
+            
+            foreach(DBSNode node in list){
+                if(!tree.Contains(node)) {
+                    tree.AddNode(node);
                 }
-
-                for (int j = 0 ; j < cleanedList.Count ; j++) {
-                    if (list[i] == cleanedList[j]) {
-                        break;
-                    } else if (j == cleanedList.Count - 1) {
-                        cleanedList.Add(list[i]);
-                        tree.AddNode(list[i]);
-                    }
-                }
-
             }
 
-            return cleanedList;
+            return tree;
         }
 
 

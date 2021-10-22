@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31727.386
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ColorClustering", "ColorClustering.csproj", "{27FBBC14-A5CA-4A7E-B1C4-E574562BD1FD}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D27E25E1-8DD7-462A-AB42-0CB08E0CF5F4}"
 	ProjectSection(SolutionItems) = preProject
 		Class\Clusters\DBSArea.cs = Class\Clusters\DBSArea.cs
@@ -17,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Class\PixelTree.cs = Class\PixelTree.cs
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ColorClusteringTests", "..\UnitTests\ColorClusteringTests.csproj", "{F6A8E589-947C-460C-9D38-7B9A5BEC1735}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core.csproj", "{1250BEEE-681A-4582-A32B-15C03E959188}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,14 +23,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{27FBBC14-A5CA-4A7E-B1C4-E574562BD1FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{27FBBC14-A5CA-4A7E-B1C4-E574562BD1FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{27FBBC14-A5CA-4A7E-B1C4-E574562BD1FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{27FBBC14-A5CA-4A7E-B1C4-E574562BD1FD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F6A8E589-947C-460C-9D38-7B9A5BEC1735}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F6A8E589-947C-460C-9D38-7B9A5BEC1735}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F6A8E589-947C-460C-9D38-7B9A5BEC1735}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F6A8E589-947C-460C-9D38-7B9A5BEC1735}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1250BEEE-681A-4582-A32B-15C03E959188}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1250BEEE-681A-4582-A32B-15C03E959188}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1250BEEE-681A-4582-A32B-15C03E959188}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1250BEEE-681A-4582-A32B-15C03E959188}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

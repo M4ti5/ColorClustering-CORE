@@ -2,8 +2,8 @@
 
 namespace ColorClustering {
     public class DBSArea {
-        private List<DBSNode> nodes;
-
+        public List<DBSNode> nodes;
+        public DBSNode avrageNode;
         public DBSArea () {
             nodes = new List<DBSNode>();
         }
@@ -47,22 +47,21 @@ namespace ColorClustering {
 
         }
 
-        public static List<DBSArea> Purge (List<DBSArea> areas , int m , out DBSArea outliers) {
-            List<DBSArea> temp = new List<DBSArea>();
-            outliers = new DBSArea();
-            foreach(DBSArea area in areas) {
-                if (area.Size() < m) {
-                    foreach( DBSNode node in area.nodes) {
-                        node.area = null;
-                        outliers.Add(node);
-                    }
-                } else {
-                    temp.Add(area);
-                    outliers = null;
-                }
+        public DBSNode AvrageNode () {
+            float[] temp = { 0 , 0 , 0 };
+            foreach (DBSNode node in nodes) {
+                temp[0] += node.red;
+                temp[1] += node.green;
+                temp[2] += node.blue;
             }
 
-            return temp;
+            int size = Size();
+            temp[0] /= size;
+            temp[1] /= size;
+            temp[2] /= size;
+            avrageNode = new DBSNode((byte)temp[0] , (byte)temp[1] , (byte)temp[2]);
+
+            return avrageNode;
         }
 
         public static bool SameArea (DBSArea a , DBSArea b) {

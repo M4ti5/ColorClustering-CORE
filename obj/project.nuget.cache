@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ouWmXi5CdaYibDBONr6cahvkh1TKFf3jlltQgdOurjoZbA/6P7fYDW/6U+JmiT4ipzycvFHReAEDbzcCqpSyVg==",
+  "dgSpecHash": "h+YBx43UsqGtoenUEiV0EYo/Yb4VsbEI+K+J8cSEHEJka60O+R+43WVTN7vca/47D1belEjwKllG/lcgyKHtHw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Matis_CAFFIAUX\\Documents\\Dev_Lab\\C#\\ColorClustering Project\\ColorClustering\\ColorClustering.csproj",
+  "projectFilePath": "C:\\Users\\Matis_CAFFIAUX\\Documents\\Dev_Lab\\C#\\ColorClustering\\Core\\Core.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Matis_CAFFIAUX\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
     "C:\\Users\\Matis_CAFFIAUX\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",

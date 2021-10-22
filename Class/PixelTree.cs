@@ -1,4 +1,6 @@
-﻿namespace ColorClustering {
+﻿using System.Collections.Generic;
+
+namespace ColorClustering {
     public class PixelTree {
         public class PixelTreeNode {
 
@@ -126,47 +128,83 @@
             PixelTreeNode toRemove = GetPixelTreeNode(node);
             PixelTreeNode toMove = null;
 
-            if (toRemove.leftChild != null || toRemove.rightChild != null) {//With Child(s)
+            if (toRemove.leftChild != null && toRemove.rightChild != null) {// With 2 Childs
 
-                if (toRemove.leftChild != null && toRemove.rightChild != null) {//2 childs
-                    toMove = FindMax(null , toRemove.leftChild);
+                //Child bind
+                toMove = FindMax(null , toRemove.leftChild);
 
-                    if (toRemove.leftChild != toMove) {
-                        toMove.leftChild = toRemove.leftChild;
+                toMove.leftChild = toRemove.leftChild;
+                toMove.rightChild = toRemove.rightChild;
+
+                toMove.leftChild.parent = toMove;
+                toMove.rightChild.parent = toMove;
+
+                //Parent Bind
+                if (toRemove.parent != null) {
+                    if (toRemove.parent.leftChild == toRemove) {
+                        toRemove.parent.leftChild = toMove;
+                    } else if (toRemove.parent.rightChild == toRemove) {
+                        toRemove.parent.rightChild = toMove;
                     }
-                    toMove.rightChild = toRemove.rightChild;
-                    if (toMove.leftChild != null) {
-                        toMove.leftChild.parent = toMove;
-                    }
-                    if (toMove.rightChild != null) {
-                        toMove.rightChild.parent = toMove;
-                    }
-
-                } else if (toRemove.leftChild != null) {//Only leftChild
-                    toMove = toRemove.leftChild;
-
-                    toMove.leftChild.parent = toMove;
-                    toMove.leftChild = toRemove.leftChild;
-
-                } else if (toRemove.rightChild != null) {//Only rightChild
-                    toMove = toRemove.rightChild;
-
-                    toMove.rightChild = toRemove.rightChild;
-                    toMove.rightChild.parent = toMove;
                 }
-
                 toMove.parent = toRemove.parent;
 
-            } else {//Wihout childs
+            } else if (toRemove.leftChild != null || toRemove.rightChild != null) {// With 1 Child
+                
+                //Child bind
+                if (toRemove.leftChild != null) {// Only Left Child
+                    toMove = toRemove.leftChild;
+                }else if(toRemove.rightChild != null) {// Only right Child
+                    toMove = toRemove.rightChild;
+                }
+                toMove.parent = toRemove.parent;
+
+                //Parent Bind
+                if (toRemove.parent != null) {
+                    if (toRemove.parent.leftChild == toRemove) {
+                        toRemove.parent.leftChild = toMove;
+                    } else if (toRemove.parent.rightChild == toRemove) {
+                        toRemove.parent.rightChild = toMove;
+                    }
+                }
+
+            } else {//Without Child
+
+                //Child Bind
+                if (toRemove.parent != null) {
+                    if (toRemove.parent.leftChild == toRemove) {
+                        toRemove.parent.leftChild = toMove;
+                    } else if (toRemove.parent.rightChild == toRemove) {
+                        toRemove.parent.rightChild = toMove;
+                    }
+                }
                 toRemove.parent = null;
             }
 
-            //Parent's Binds
-            if (toRemove.parent.leftChild == toRemove) {//Is leftChild of parent
-                toRemove.parent.leftChild = toMove;
-            } else if (toRemove.parent.rightChild == toRemove) {// Is rightChild of parent
-                toRemove.parent.rightChild = toMove;
-            }
+            
         }
+
+        public List<Pixel> ToList () {
+            List<Pixel> result = new List<Pixel>();
+
+            List<PixelTreeNode> buffer = new List<PixelTreeNode>();// the use of buffer is than it enumerates node to do
+            buffer.Add(root);
+
+            while (buffer.Count != 0) { //Breadth-first order
+                PixelTreeNode node = buffer[0];
+                buffer.Remove(node);
+
+                result.Add(node.node);
+
+                if (node.leftChild != null) { //Add left Child into the buffer
+                    buffer.Add(node.leftChild);
+                }
+                if (node.rightChild != null) {//Add right Child into the buffer
+                    buffer.Add(node.rightChild);
+                }
+            }
+            return result;
+        }
+
     }
 }
