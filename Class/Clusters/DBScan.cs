@@ -10,13 +10,18 @@ namespace ColorClustering {
         private List<DBSNode> pixelMap = new List<DBSNode>();
         private List<DBSNode> alteredPixelMap = new List<DBSNode>();
         private List<Pixel> reducedPixelMap = new List<Pixel>();
-
         private PixelTree pixelTree;
 
         private bool isClustered = false;
 
         public DBScan (Image _image, int m , int d) {
+
+            Stopwatch time = new Stopwatch();
+            Stopwatch mainTime = new Stopwatch();
+
             Console.WriteLine("DScan Start ...");
+            mainTime.Start();
+
             image = _image;
             byte[] redMap = image.GetRedMap();
             byte[] greenMap = image.GetGreenMap();
@@ -28,11 +33,7 @@ namespace ColorClustering {
             }
 
             Console.WriteLine("Optimizing ...");
-            Stopwatch time = new Stopwatch();
-            Stopwatch mainTime = new Stopwatch();
             time.Start();
-            mainTime.Start();
-
             pixelTree = DBSNode.DeleteDuplicate(pixelMap);
 
             Console.WriteLine("Factoring ...");

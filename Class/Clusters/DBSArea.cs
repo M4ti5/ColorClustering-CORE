@@ -49,13 +49,15 @@ namespace ColorClustering {
 
         public DBSNode AvrageNode () {
             float[] temp = { 0 , 0 , 0 };
+            int size = 0;
             foreach (DBSNode node in nodes) {
-                temp[0] += node.red;
-                temp[1] += node.green;
-                temp[2] += node.blue;
+                temp[0] += node.red * node.weight;
+                temp[1] += node.green * node.weight;
+                temp[2] += node.blue * node.weight;
+                size += node.weight;
             }
 
-            int size = Size();
+
             temp[0] /= size;
             temp[1] /= size;
             temp[2] /= size;

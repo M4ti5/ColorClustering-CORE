@@ -3,18 +3,20 @@
 namespace ColorClustering {
     public class DBSNode : Pixel {
         public DBSArea area = null;
+        public int weight = 1;
         public DBSNode (byte _red , byte _green , byte _blue) : base(_red , _green , _blue) {
 
         }
         public static PixelTree DeleteDuplicate (List<DBSNode> list) {
             PixelTree tree = new PixelTree(list[0]);
-            
-            foreach(DBSNode node in list){
-                if(!tree.Contains(node)) {
+
+            foreach (DBSNode node in list) {
+                if (!tree.Contains(node)) {
                     tree.AddNode(node);
+                } else {
+                    node.weight += 1;
                 }
             }
-
             return tree;
         }
 
