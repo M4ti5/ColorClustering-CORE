@@ -7,9 +7,9 @@ Version graphique : [ici](https://github.com/M4ti5/ColorClustering)
 ## K-means
 K-means est une méthode permettant de calculer la valeur **moyenne** (mean) d'un ensemble de points qui est le plus proche de notre point K (*d'où K-means*). À chaque itération nous affinons la valeur en cherchant à nouveau les points les plus proches de notre point K.
 Les distances implémentées sont :
-  - Distance Euclidienne:
+  - Distance Euclidienne:</br>
 ![formule distance euclidienne](https://latex.codecogs.com/gif.latex?EuclidianDistance={\sqrt{(x_a-x_b)^{2}&plus;(y_a-y_b)^{2}}})
-  - Distance de Manhattan: 
+  - Distance de Manhattan: </br>
 ![formule distance Manhattan](https://latex.codecogs.com/gif.latex?ManhattanDistance={\left&space;|x_a-x_b\right&space;|&plus;\left&space;|y_a-y_b\right&space;|})
 
 
